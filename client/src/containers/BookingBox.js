@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BookingList from "../components/BookingList";
-import { getBookings } from "../components/BookingFetches";
+import { getBookings, deleteBookingFromDatabase } from "../components/BookingFetches";
 import BookingForm from "../components/BookingForm";
 
 const BookingBox = () => {
@@ -14,17 +14,25 @@ const BookingBox = () => {
             }) 
     }, [])
 
+
     const addBooking = (booking) => {
         setListOfBookings([...listOfBookings, booking])
     } 
 
+
+    const removeBookingFromFrontend = (id) => {
+        deleteBookingFromDatabase(id)
+        .then(() => {
+            setListOfBookings(listOfBookings.filter(booking => booking._id !== id))
+        })
+    }
 
 
     return(
         <>
             <BookingForm addBooking={addBooking}/>
             <BookingList
-            listOfBookings={listOfBookings}/>
+            listOfBookings={listOfBookings} removeBookingFromFrontend={removeBookingFromFrontend}/>
         </>
     )
 }

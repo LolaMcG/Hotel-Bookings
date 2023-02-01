@@ -1,12 +1,13 @@
 import BookingItem from "./BookingItem"
 
-const BookingList = ({listOfBookings}) => {
+const BookingList = ({listOfBookings, removeBookingFromFrontend}) => {
 
     const listOfBookingItems = listOfBookings.map((booking) => {
         return (
             <BookingItem
             booking = {booking}
             key = {booking._id}
+            removeBookingFromFrontend = {removeBookingFromFrontend}
             />
         )
     })

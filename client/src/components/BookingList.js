@@ -1,4 +1,7 @@
 import BookingItem from "./BookingItem"
+import styled from 'styled-components'
+
+
 
 const BookingList = ({listOfBookings, removeBookingFromFrontend}) => {
 

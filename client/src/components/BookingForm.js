@@ -1,6 +1,26 @@
 import { useState } from "react"
 import { postBooking } from "./BookingFetches"
+import styled from "styled-components"
 // const ObjectId = require('mongodb').ObjectId
+
+
+const StyledDiv = styled.div`
+    background-color:#FFEFD5;
+    opacity: .9;
+    padding: 7px;
+    width: 550px;
+    border-radius: 5px;`
+
+const SubmitButton = styled.input`
+    margin-left: 10px;`
+
+const LabelText = styled.label`
+    font-family: "Dancing Script";
+    font-size: 20px;`
+
+const InputBox = styled.input`
+    margin: 5px;`
+
 
 const BookingForm = ({addBooking}) => {
 
@@ -30,19 +50,19 @@ const BookingForm = ({addBooking}) => {
             email: "",
             checkedin: false
         })
-
-
     }
 
 
     return(
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name:</label>
-            <input name="name" type="text" onChange={inputText} value={formData.name}/>
-            <label htmlFor="email">Email:</label>
-            <input name="email" type="text" onChange={inputText} value={formData.email}/>
-            <input type="submit" value="Add Booking"/>
-        </form>
+        <StyledDiv>
+            <form onSubmit={handleSubmit}>
+                <LabelText htmlFor="name">Name: </LabelText>
+                <InputBox name="name" type="text" onChange={inputText} value={formData.name}/>
+                <LabelText htmlFor="email">Email: </LabelText>
+                <InputBox name="email" type="text" onChange={inputText} value={formData.email}/>
+                <SubmitButton type="submit" value="Add Booking"/>
+            </form>
+        </StyledDiv>
     )
 }
 
